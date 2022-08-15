@@ -27,7 +27,7 @@ public abstract class CharacterClass {
         this.level = level;
         this.strength = strength * level;
         this.dexterity = dexterity * level;
-        this.intelligence = intelligence * level;
+        this.intelligence = intelligence* level;
 
     }
 
@@ -83,6 +83,11 @@ public abstract class CharacterClass {
         this.intelligence = intelligence;
     }
 
+    public void levelUp(int i) {
+        level = level + i;
+        setLevel(level);
+    }
+
 
 
 
@@ -107,6 +112,7 @@ public abstract class CharacterClass {
         System.out.println("Strength: " +strength);
         System.out.println("Dexterity: " + dexterity);
         System.out.println("Intelligence: " + intelligence);
+        System.out.println("DPS: " + attack());
         System.out.println();
     }
 }

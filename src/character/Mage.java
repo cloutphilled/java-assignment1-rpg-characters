@@ -5,8 +5,8 @@ public class Mage extends CharacterClass {
     //private Damage intDPS;
 
 
-    public Mage(String name, String characterClass, int level) {
-        super(name, characterClass, level, 1, 1, 8);
+    public Mage(String name, int level) {
+        super(name, "Mage", level, 1, 1, 8);
         //this.intDPS = intDPS;
     }
 
@@ -14,7 +14,6 @@ public class Mage extends CharacterClass {
     @Override
     public int attack() {
         int i = (int) (intelligence * 1.1);
-        System.out.println("DPS: " + i);
         return i;
     }
 
@@ -24,4 +23,11 @@ public class Mage extends CharacterClass {
     }
 
 
+    @Override
+    public void levelUp(int i) {
+        super.levelUp(i);
+        super.strength += 1 * i;
+        super.dexterity += 1 * i;
+        super.intelligence += 5 * i;
+    }
 }
