@@ -1,15 +1,18 @@
 package character;
+import Equipment.Equipment;
 
-public abstract class CharacterClass {
+import java.util.HashMap;
+
+public abstract class CharacterClass{
     public String name;
     public String characterClass;
     public int level;
     public int strength, dexterity, intelligence;
 
-    public abstract int attack();
+    public abstract double attack();
     public abstract int defend();
 
-
+    HashMap<String, Equipment> Equipment = new HashMap<String, Equipment>();
 
 
 
@@ -17,7 +20,6 @@ public abstract class CharacterClass {
 
     // Constructor
     public CharacterClass() {
-
     }
 
     // Constructor

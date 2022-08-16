@@ -9,7 +9,7 @@ public class Ranger extends CharacterClass{
     }
 
     @Override
-    public int attack() {
+    public double attack() {
         return 0;
     }
     @Override

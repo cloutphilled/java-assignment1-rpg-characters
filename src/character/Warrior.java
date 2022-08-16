@@ -10,7 +10,7 @@ public class Warrior extends CharacterClass{
     }
 
     @Override
-    public int attack() {
+    public double attack() {
         return 0;
     }
     @Override

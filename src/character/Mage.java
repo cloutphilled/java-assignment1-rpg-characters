@@ -1,5 +1,7 @@
 package character;
 
+import static java.lang.Double.valueOf;
+
 public class Mage extends CharacterClass {
 
     //private Damage intDPS;
@@ -11,11 +13,7 @@ public class Mage extends CharacterClass {
     }
 
 
-    @Override
-    public int attack() {
-        int i = (int) (intelligence * 1.1);
-        return i;
-    }
+
 
     @Override
     public int defend(){
@@ -29,5 +27,13 @@ public class Mage extends CharacterClass {
         super.strength += 1 * i;
         super.dexterity += 1 * i;
         super.intelligence += 5 * i;
+    }
+
+    @Override
+    public double attack() {
+        double dmg = 1;
+        System.out.println(super.intelligence);
+        dmg *= 1+((double)super.intelligence / 100);
+        return dmg;
     }
 }

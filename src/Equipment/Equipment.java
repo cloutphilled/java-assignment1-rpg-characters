@@ -8,8 +8,10 @@ public abstract class Equipment {
     private String itemSlot;
     private boolean isWeapon;
     private boolean isArmor;
+    private double baseDamage;
+    private double attacksPerSecond;
 
-    public Equipment(String itemName, int reqLevel, int itemLevel, String itemType, String itemSlot, boolean isWeapon, boolean isArmor) {
+    public Equipment(String itemName, int reqLevel, int itemLevel, String itemType, String itemSlot, boolean isWeapon, boolean isArmor, double baseDamage, double attacksPerSecond) {
         this.itemName = itemName;
         this.reqLevel = reqLevel;
         this.itemLevel = itemLevel;
@@ -17,6 +19,8 @@ public abstract class Equipment {
         this.itemSlot = itemSlot;
         this.isWeapon = isWeapon;
         this.isArmor = isArmor;
+        this.baseDamage = baseDamage;
+        this.attacksPerSecond = attacksPerSecond;
     }
 
     public String getItemName() {
@@ -74,5 +78,21 @@ public abstract class Equipment {
 
     public void setItemType(String itemType) {
         this.itemType = itemType;
+    }
+
+    public double getBaseDamage() {
+        return baseDamage;
+    }
+
+    public void setBaseDamage(double baseDamage) {
+        this.baseDamage = baseDamage;
+    }
+
+    public double getAttacksPerSecond() {
+        return attacksPerSecond;
+    }
+
+    public void setAttacksPerSecond(double attacksPerSecond) {
+        this.attacksPerSecond = attacksPerSecond;
     }
 }

@@ -10,7 +10,7 @@ public class Rogue extends CharacterClass{
     }
 
     @Override
-    public int attack() {
+    public double attack() {
         int i = (int) (dexterity * 1.1);
         return i;
     }
