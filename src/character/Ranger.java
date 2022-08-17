@@ -6,25 +6,31 @@ public class Ranger extends CharacterClass{
 
     public Ranger(String name, int level) {
         super(name, "Ranger", level, 1, 7, 1);
+        allowedArmorType.add("Leather");
+        allowedArmorType.add("Mail");
+        allowedWeaponType.add("Bow");
     }
 
+    public double CalculateTotalAttributes(){
+        double totalAttributes = 0;
+        totalAttributes += this.intelligence;
+        totalAttributes += getItems().get("Body").getMainStat();
+        return totalAttributes;
+    }
     @Override
     public double attack() {
-        return 0;
-    }
-    @Override
-    public int defend(){
-        return 0;
+        double dmg = 1;
+        dmg *= 1+(CalculateTotalAttributes() / 100);
+        return dmg;
     }
 
+
     @Override
-    public void levelUp(int i) {
-        super.levelUp(i);
+    public int levelUp(int i) {
+        super.level += i;
         super.strength += 1;
         super.dexterity += 5;
         super.intelligence += 1;
-        super.strength = (1 * i) + strength;
-        super.dexterity = (5 * i) + dexterity;
-        super.intelligence = (1 * i) + intelligence;
+        return super.level;
     }
 }

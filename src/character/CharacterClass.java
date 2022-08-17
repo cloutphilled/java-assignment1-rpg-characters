@@ -1,6 +1,7 @@
 package character;
-import Equipment.Equipment;
+import Equipment.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class CharacterClass{
@@ -9,13 +10,16 @@ public abstract class CharacterClass{
     public int level;
     public int strength, dexterity, intelligence;
 
+
     public abstract double attack();
-    public abstract int defend();
-
-    HashMap<String, Equipment> Equipment = new HashMap<String, Equipment>();
 
 
+    ArrayList<String> allowedArmorType = new ArrayList<>();
+    ArrayList<String> allowedWeaponType = new ArrayList<>();
 
+
+
+    private HashMap<String, Equipment> Items = new HashMap<String, Equipment>();
 
 
     // Constructor
@@ -85,11 +89,58 @@ public abstract class CharacterClass{
         this.intelligence = intelligence;
     }
 
-    public void levelUp(int i) {
+
+
+    public int levelUp(int i) {
         level = level + i;
         setLevel(level);
+        return i;
     }
 
+
+
+
+
+
+    public HashMap<String, Equipment> getItems() {
+        return Items;
+    }
+    public void setItems(HashMap<String, Equipment> items) {
+        Items = items;
+    }
+
+
+    /*
+    public void checkItemRequirement(Equipment item)throws InvalidArmorException, InvalidWeaponException{
+        if (item.getReqLevel() >= this.getLevel()){
+            throw new InvalidWeaponException("You do not meet the level requirement");
+        }
+        if(item.getClass()==Armor.class) {
+            for (String armorType: this.allowedWeaponType) {
+                if(((Armor) item).getItemType().equalsIgnoreCase(armorType)){
+                    return;
+                }
+            }
+            throw new InvalidArmorException("You do not meet the class requirement for this armor");
+        } else if (item.getClass()==Weapon.class) {
+            for (String weaponType: this.allowedWeaponType) {
+                if((Weapon)item.getItemType().equalsIgnoreCase(weaponType)){
+                    return;
+                }
+            }
+            throw new InvalidWeaponException("You do not meet the class requirement for this weapon");
+        }
+    }
+
+    public void EquipItem(Equipment item)throws InvalidArmorException,InvalidWeaponException{
+        checkItemRequirement(item);
+        if(item.getClass() == Weapon.class){
+            Items.put(item.getItemSlot(), item);
+        } else if (item.getClass()== Armor.class) {
+            Items.put(item.getItemSlot(), item);
+        }
+    }
+*/
 
 
 
@@ -117,4 +168,18 @@ public abstract class CharacterClass{
         System.out.println("DPS: " + attack());
         System.out.println();
     }
+
+    /*
+    public void checkItemReqAndChar() throws InvalidLevelException {
+        if (Equipment.getReqLevel() > this.getLevel()) {
+            throw new InvalidLevelException("You do not meet the required level");
+        }
+        if (Equipment.getItemType() != ) {
+
+                }
+
+            }
+     */
+
+
 }

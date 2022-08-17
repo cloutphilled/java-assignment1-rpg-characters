@@ -1,27 +1,33 @@
 package Equipment;
+import character.*;
 
 public abstract class Equipment {
     private String itemName;
     private int reqLevel;
-    private int itemLevel;
-    private String itemType;
     private String itemSlot;
-    private boolean isWeapon;
-    private boolean isArmor;
+   // private boolean isWeapon;
+    
+   // private boolean isArmor;
     private double baseDamage;
     private double attacksPerSecond;
+    private double dps;
+    private double mainStat;
+    private String itemType;
 
-    public Equipment(String itemName, int reqLevel, int itemLevel, String itemType, String itemSlot, boolean isWeapon, boolean isArmor, double baseDamage, double attacksPerSecond) {
+
+
+    public Equipment(String itemName, int reqLevel,String itemType, String itemSlot, double baseDamage, double attacksPerSecond, double dps, double mainStat) {
         this.itemName = itemName;
         this.reqLevel = reqLevel;
-        this.itemLevel = itemLevel;
         this.itemType = itemType;
         this.itemSlot = itemSlot;
-        this.isWeapon = isWeapon;
-        this.isArmor = isArmor;
         this.baseDamage = baseDamage;
         this.attacksPerSecond = attacksPerSecond;
+        this.dps = baseDamage * attacksPerSecond;
+        this.mainStat = mainStat;
     }
+
+
 
     public String getItemName() {
         return itemName;
@@ -39,13 +45,8 @@ public abstract class Equipment {
         this.reqLevel = reqLevel;
     }
 
-    public int getItemLevel() {
-        return itemLevel;
-    }
 
-    public void setItemLevel(int itemLevel) {
-        this.itemLevel = itemLevel;
-    }
+
 
     public String getItemSlot() {
         return itemSlot;
@@ -56,6 +57,7 @@ public abstract class Equipment {
     }
 
 
+    /* 
     public boolean isWeapon() {
         return isWeapon;
     }
@@ -70,15 +72,8 @@ public abstract class Equipment {
 
     public void setArmor(boolean armor) {
         isArmor = armor;
-    }
-
-    public String getItemType() {
-        return itemType;
-    }
-
-    public void setItemType(String itemType) {
-        this.itemType = itemType;
-    }
+    } 
+    */
 
     public double getBaseDamage() {
         return baseDamage;
@@ -95,4 +90,61 @@ public abstract class Equipment {
     public void setAttacksPerSecond(double attacksPerSecond) {
         this.attacksPerSecond = attacksPerSecond;
     }
+    public double getMainStat() {
+        return mainStat;
+    }
+
+    public void setMainStat(double mainStat) {
+        this.mainStat = mainStat;
+    }
+    public double getDps() {
+        return dps;
+    }
+
+    public void setDps(double dps) {
+        this.dps = baseDamage*attacksPerSecond;
+    }
+
+    public String getItemType() {
+        if (itemType.equals("Staff")) {
+            this.itemType = "Weapon";
+        } else if (itemType.equals("Wand")) {
+            this.itemType = "Weapon";
+        } else if (itemType.equals("Bow")) {
+            this.itemType = "Weapon";
+        } else if (itemType.equals("Dagger")) {
+            this.itemType = "Weapon";
+        } else if (itemType.equals("Sword")) {
+            this.itemType = "Weapon";
+        } else if (itemType.equals("Axe")) {
+            this.itemType = "Weapon";
+        } else if (itemType.equals("Hammer")) {
+            this.itemType = "Weapon";
+        } else if (itemType.equals("Cloth")) {
+            this.itemType = "Armor";
+        } else if (itemType.equals("Leather")) {
+            this.itemType = "Armor";
+        } else if (itemType.equals("Mail")) {
+            this.itemType = "Armor";
+        } else if (itemType.equals("Plate")) {
+            this.itemType = "Armor";
+        }
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
+
+    public void getDetails() {
+        CharacterClass.printHeading("ITEM INFO");
+        System.out.println("Name: " + itemName);
+        System.out.println("Required level: " + reqLevel);
+        System.out.println("** ITEM STATS **");
+        System.out.println("Slot: " + itemSlot);
+        System.out.println("Type: " + itemType);
+        System.out.println();
+    }
+
+
 }

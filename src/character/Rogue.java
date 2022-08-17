@@ -6,24 +6,31 @@ public class Rogue extends CharacterClass{
 
     public Rogue(String name, int level) {
         super(name, "Rogue", level, 2, 6, 1);
-
+        allowedArmorType.add("Leather");
+        allowedArmorType.add("Mail");
+        allowedWeaponType.add("Dagger");
+        allowedWeaponType.add("Sword");
     }
 
     @Override
     public double attack() {
-        int i = (int) (dexterity * 1.1);
-        return i;
+        double dmg = 1;
+        dmg *= 1+(CalculateTotalAttributes() / 100);
+        return dmg;
     }
-    @Override
-    public int defend(){
-        return 0;
+    public double CalculateTotalAttributes(){
+        double totalAttributes = 0;
+        totalAttributes += this.dexterity;
+        totalAttributes += getItems().get("Body").getMainStat();
+        return totalAttributes;
     }
 
     @Override
-    public void levelUp(int i) {
-        super.levelUp(i);
+    public int levelUp(int i) {
+        super.level += i;
         super.strength += 2 * i;
         super.dexterity += 4 * i;
-        super.intelligence = (1 * i) + intelligence;
+        super.intelligence += 1 * i;
+        return super.level;
     }
 }
