@@ -55,25 +55,7 @@ public abstract class Equipment {
     public void setItemSlot(String itemSlot) {
         this.itemSlot = itemSlot;
     }
-
-
-    /* 
-    public boolean isWeapon() {
-        return isWeapon;
-    }
-
-    public void setWeapon(boolean weapon) {
-        isWeapon = weapon;
-    }
-
-    public boolean isArmor() {
-        return isArmor;
-    }
-
-    public void setArmor(boolean armor) {
-        isArmor = armor;
-    } 
-    */
+    
 
     public double getBaseDamage() {
         return baseDamage;
